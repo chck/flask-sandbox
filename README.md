@@ -12,3 +12,8 @@ MySQL  5.7.11
 % pip install -r requirements.txt
 ```
 
+## Usage
+```
+% python app.py
+# Running on http://127.0.0.1:5000/
+```

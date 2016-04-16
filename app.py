@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -12,8 +12,8 @@ def index():
 
 @app.route('/materials/')
 @app.route('/materials/<id>')
-def show_materials(id=None):
-    return 'xxx %s' % id
+def get_materials(id=None):
+    return jsonify(id=id)
 
 
 if __name__ == '__main__':

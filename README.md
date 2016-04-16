@@ -15,5 +15,5 @@ MySQL  5.7.11
 ## Usage
 ```
 % python app.py
-# Running on http://127.0.0.1:5000/
+% curl "http://localhost:5000/api/v1/"
 ```

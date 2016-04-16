@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # http://nwpct1.hatenablog.com/entry/flask-libraries
-from flask import Flask, jsonify, request
+from urllib.parse import urljoin
+
+from flask import Flask, jsonify, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -10,14 +12,15 @@ db = SQLAlchemy(app)
 db.init_app(app)
 
 
+# 有効なエンドポイントに誘導
 @app.route('/')
 def index():
-    return 'Index Page'
+    return jsonify(data=urljoin(request.host_url, url_for(('.materials'))))
 
 
 @app.route('/materials')
 @app.route('/materials/<id>')
-def get_materials(id=None):
+def materials(id=None):
     from models import Material
 
     limit = request.args.get('limit', 20)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -13,6 +13,7 @@ def index():
 @app.route('/materials/')
 @app.route('/materials/<id>')
 def get_materials(id=None):
+    limit = request.args.get('limit', 20)
     return jsonify(id=id)
 
 
